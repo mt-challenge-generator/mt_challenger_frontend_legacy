@@ -20,6 +20,7 @@ npm install vuex@next --save
 npm install vue-router@next --save
 npm install primevue@^3.9.1 --save
 npm install primeicons --save
+npm install axios --save
 ```
 
 **Note:** You might be prompted to run `npm audit fix` to fix warnings.
