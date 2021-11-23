@@ -1,4 +1,4 @@
-const { Tokenizer, NNTokenizer, WordPieceTokenizer } = require('nlp-tokenizer');
+import { Tokenizer, NNTokenizer, WordPieceTokenizer } from 'nlp-tokenizer'
 
 function tokenizeSentence(inputSentence) {
 
