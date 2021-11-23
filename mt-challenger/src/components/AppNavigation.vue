@@ -21,7 +21,7 @@
 import Toolbar from 'primevue/toolbar';
 
 export default {
-  name: TopMenuBar,
+  name: 'AppNavigation',
   components: {
     Toolbar
   },

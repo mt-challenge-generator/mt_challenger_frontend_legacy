@@ -1,16 +1,20 @@
 <template>
-  <TopMenuBar/>
+  <AppNavigation />
+  <RouterView />
+  <AppFooter />
 </template>
 
 <script>
-import TopMenuBar from './components/TopMenuBar.vue'
+import AppFooter from './components/AppFooter.vue'
+import AppNavigation from './components/AppNavigation.vue'
 
-export default {
+export default ({
   name: 'App',
   components: {
-    TopMenuBar
-  }
-}
+    AppNavigation,
+    AppFooter,
+  },
+})
 </script>
 
 <style>

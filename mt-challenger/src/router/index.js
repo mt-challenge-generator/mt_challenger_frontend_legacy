@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// there is also createWebHashHistory and createMemoryHistory
+import Home from './views/Home.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
-  routes: [],
+  routes: [
+    {
+      name: 'home',
+      path: '/',
+      component: Home
+    }
+  ],
 })
