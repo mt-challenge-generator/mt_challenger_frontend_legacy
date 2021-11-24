@@ -6,7 +6,12 @@
                     List of available test sets
                 </div>
             </template>
-
+            <template #empty>
+                No sets found.
+            </template>
+            <template #loading>
+                Loading set list. Please wait.
+            </template>
             <template #grid="slotProps">
                 <Card class="m-3">
                     <template #title>
@@ -23,7 +28,7 @@
                 </Card>
             </template>
         </DataView>
-        </div>
+    </div>
 </template>
 
 <script>

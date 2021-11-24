@@ -46,6 +46,7 @@ const defaultState = () => {
     currentTestSet: {},
     testItems: [
       {
+        id: 1,
         source: 'This car drives easily',
         target: {
           prefix: '+/-',
@@ -53,6 +54,7 @@ const defaultState = () => {
         }
       },
       {
+        id: 2,
         source: 'This car drives easily',
         target: {
           prefix: '+/-',
@@ -60,6 +62,7 @@ const defaultState = () => {
         }
       },
       {
+        id: 3,
         source: 'This car drives easily',
         target: {
           prefix: '+/-',
