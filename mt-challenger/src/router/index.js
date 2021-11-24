@@ -25,17 +25,17 @@ const routes = [
   },
   {
     name: 'select-sentence',
-    path: '/generator/select-sentence',
+    path: '/generator/:setid/select-sentence',
     component: SelectSentence
   },
   {
     name: 'edit-sentence',
-    path: '/generator/edit-sentence',
+    path: '/generator/:setid/edit-sentence',
     component: EditSentence
   },
   {
     name: 'validate-sentences',
-    path: '/generator/validate-sentences',
+    path: '/generator/:setid/validate-sentences',
     component: ValidateSentences
   },
   {
