@@ -2,43 +2,41 @@
     <div>
         <Breadcrumb :home="home" :model="items" />
         <router-view />
-        <div class="flex justify-content-end">
-            <Button label="Next" class="m-3" icon="pi pi-chevron-right" iconPos="right" @click="handleNextBtn" />
-        </div>
+        <SentenceEditor />
     </div>
 </template>
 
 <script>
 import Breadcrumb from 'primevue/breadcrumb'
-import Button from 'primevue/button'
+import SentenceEditor from '../components/SentenceEditor.vue'
 
 export default {
     name: 'EditSentence',
     components: {
         Breadcrumb,
-        Button
+        SentenceEditor
     },
     data() {
 		return {
-            home: {icon: 'pi pi-home', to: '/generator'},
+            home: {icon: 'pi pi-home', to: {name: 'generator'}},
 			items: [{
                 label: 'Select Test Set',
-                to: '/generator'
+                to: {name: 'select-test-set'}
             },
             {
                 label: 'Select Sentence',
-                to: '/generator/select-sentence'
+                to: {name: 'select-sentence', params: { setid: this.$store.state.currentTestSet.id}}
             },
             {
                 label: 'Edit Sentence',
-                to: '/generator/edit-sentence'
+                to: {name: 'edit-sentence', 
+                    params: { 
+                        setid: this.$store.state.currentTestSet.id,
+                        itemid: this.$store.state.currentTestItem.id
+                    }
+                }
             }]
 		}
-	},
-    methods: {
-        handleNextBtn() {
-            this.$router.push({name: 'validate-sentences'})
-        }
-    }
+	}
 }
 </script>

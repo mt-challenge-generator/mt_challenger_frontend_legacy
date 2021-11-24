@@ -72,8 +72,23 @@ const defaultState = () => {
     ],
     currentTestItem: {},
     currentSentenceTemplate: [],
-    buckets: [],
-    newBucket: {},
+    buckets: [
+      {
+        id: 1,
+        name: 'ADJ_color',
+        items: ['red', 'blue', 'green']
+      },
+      {
+        id: 2,
+        name: 'NN_four_wheels',
+        items: ['bus', 'lorry', 'van']
+      },
+      {
+        id: 3,
+        name: 'ADV_modal',
+        items: ['smoothly', 'nicely', 'safely']
+      }
+    ],
     currentBucket: {},
     generatedSentences: [],
     alert: {
@@ -87,7 +102,38 @@ const defaultState = () => {
 const state = defaultState()
 
 const getters = {
-  
+  getTemplateFromCurrentTestItem: () => {
+    // TO DO
+    return [
+      {
+        label: 'This',
+        bucket: ['This']
+      },
+      {
+        label: '+',
+        bucket: []
+      },
+      {
+        label: 'car',
+        bucket: ['car']
+      },
+      {
+        label: '+',
+        bucket: []
+      },
+      {
+        label: 'drives',
+        bucket: ['drives']
+      },
+      {
+        label: '+',
+        bucket: []
+      },{
+        label: 'easily',
+        bucket: ['easily']
+      }
+    ]
+  }
 }
 
 const mutations = {
@@ -95,16 +141,24 @@ const mutations = {
     state.testSets = testSets
   },
   
-  setCurrentTestSet: (state, currentTestSet) => {
-      Object.assign(state.currentTestSet, currentTestSet)
+  setCurrentTestSet: (state, testSet) => {
+      Object.assign(state.currentTestSet, testSet)
   },
 
-  setCurrentTestItem: (state, currentTestItem) => {
-      state.currentTestItem = currentTestItem
+  setCurrentTestItem: (state, testItem) => {
+      state.currentTestItem = testItem
   },
 
   setTestItems: (state, testItems) => {
     state.testItems = testItems
+  },
+
+  setCurrentSentenceTemplate: (state, currentSentenceTemplate) => {
+    state.currentSentenceTemplate = currentSentenceTemplate
+},
+
+  setCurrentBucket: (state, bucket) => {
+    Object.assign(state.currentBucket, bucket);
   },
 
   setAlert: (state, alert) => {

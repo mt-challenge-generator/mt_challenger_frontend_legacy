@@ -48,7 +48,6 @@ export default {
             // TO DO: get list of sets
             console.log('test set', testset)
             this.$store.commit('setCurrentTestSet', testset)
-            console.log('test set', this.$store.state.currentTestSet)
             this.$router.push({name: 'select-sentence', params: { setid: testset.id}})
         }
     }

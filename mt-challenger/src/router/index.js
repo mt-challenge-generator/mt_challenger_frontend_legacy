@@ -30,12 +30,12 @@ const routes = [
   },
   {
     name: 'edit-sentence',
-    path: '/generator/:setid/edit-sentence',
+    path: '/generator/:setid/:itemid/edit-sentence',
     component: EditSentence
   },
   {
     name: 'validate-sentences',
-    path: '/generator/:setid/validate-sentences',
+    path: '/generator/:setid/:itemid/validate-sentences',
     component: ValidateSentences
   },
   {
