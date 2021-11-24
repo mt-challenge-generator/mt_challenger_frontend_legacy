@@ -8,7 +8,7 @@
 
 <script>
 import Breadcrumb from 'primevue/breadcrumb'
-import TestSets from '../components/TestSets.vue'
+import TestSets from '../components/TestSets'
 
 export default {
     name: 'SelectTestSet',
@@ -19,26 +19,12 @@ export default {
     data() {
 		return {
             
-            home: {icon: 'pi pi-home', to: '/generator'},
+            home: {icon: 'pi pi-home', to: {name: 'generator'}},
 			items: [{
                 label: 'Select Test Set',
-                to: '/generator'
-            },
-            {
-                label: 'Select Sentence',
-                to: '/generator/select-sentence'
+                to: {name: 'select-test-set'}
             }]
 		}
-	},
-    methods: {
-        handleNextBtn() {
-            this.$router.push({name: 'select-sentence'})
-        },
-        handleSelectBtn(id) {
-            // TO DO: get list of sentences by test set id
-            console.log('test set id', id)
-            this.$router.push({name: 'select-sentence', params: { setid: id}})
-        }
-    }
+	}
 }
 </script>
