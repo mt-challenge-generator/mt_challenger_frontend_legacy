@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="card my-3">
+            <div class="text-center">
+                <p><strong>Source sentence:</strong> {{ $store.state.currentTestItem.source }}</p>
+                <p><strong>Target rule:</strong> {{ $store.state.currentTestItem.target.prefix }} {{ $store.state.currentTestItem.target.rule }}</p>
+            </div>
             <div class="flex flex-row">
                 <Fieldset legend="Editor" class="col-10">
                     <div  class="flex flex-wrap overflow-y-scroll">
@@ -41,6 +45,7 @@ import Button from 'primevue/button'
 import Panel from 'primevue/panel'
 import Fieldset from 'primevue/fieldset'
 import { PLUS, PLUS_TEMPLATE_ITEM } from '../utils/constants'
+import { generateSentences } from '../utils/functions'
 
 export default {
     name: 'SentenceEditor',
@@ -62,6 +67,9 @@ export default {
     },
     methods: {
         handleGenerateBtn() {
+            const sentences = generateSentences(this.sentenceTemplate)
+            this.$store.commit('setGeneratedSentences', sentences)
+            console.log(this.$store.state.generatedSentences)
             this.$router.push({
                 name: 'validate-sentences', 
                 params: { 

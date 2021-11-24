@@ -152,7 +152,11 @@ const mutations = {
 
   setCurrentSentenceTemplate: (state, sentenceTemplate) => {
     state.currentSentenceTemplate = sentenceTemplate
-},
+  },
+
+  setGeneratedSentences: (state, generatedSentences) => {
+    state.generatedSentences = generatedSentences
+  },
 
   setCurrentBucket: (state, bucket) => {
     Object.assign(state.currentBucket, bucket);

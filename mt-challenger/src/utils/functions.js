@@ -1,6 +1,6 @@
-import { Tokenizer, NNTokenizer, WordPieceTokenizer } from 'nlp-tokenizer';
+import { Tokenizer } from 'nlp-tokenizer' // NNTokenizer, WordPieceTokenizer
 
-function tokenizeSentence(inputSentence) {
+export function tokenizeSentence(inputSentence) {
 
   let tokenizer = new Tokenizer()
 
@@ -32,7 +32,7 @@ function _generateSentences(a, b, ...c) {
 }
 
 // function to extract buckets from list and expand
-function generateSentences(itemList) {
+export function generateSentences(itemList) {
     let bucketList = itemList.map(({bucket})=>bucket);
     const bucketListFilt = bucketList.filter((element) => { return element.length > 0;})
     return _generateSentences(...bucketListFilt);
