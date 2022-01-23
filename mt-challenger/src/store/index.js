@@ -168,6 +168,13 @@ const mutations = {
     Object.assign(state.currentBucket, bucket);
   },
 
+  clearCurrentBucket: (state) => {
+    Object.assign(state.currentBucket, { id: null,
+      name: '',
+      items: [],
+      is_selected: false} );
+  },
+
   setAlert: (state, alert) => {
     Object.assign(state.alert, alert);
   },

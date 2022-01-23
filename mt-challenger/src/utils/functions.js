@@ -39,12 +39,19 @@ export function generateSentences(itemList) {
 }
 
 // toggle the 'is_selected' property of the item at the given index and deselects all the other items in the list
-export function deselect_all_else(itemList, index) {
-  for (let i=0; i<index; i++) {
-    itemList[i].is_selected = false
+export function deselect_all_else(itemList, index=-1) {
+  if (index<0 || index>=itemList.length) {
+    for (let item of itemList) {
+      item.is_selected = false
+    }
   }
-  itemList[index].is_selected = !itemList[index].is_selected
-  for (let i=index+1; i<itemList.length; i++) {
-    itemList[i].is_selected = false
+  else {
+    for (let i=0; i<index; i++) {
+      itemList[i].is_selected = false
+    }
+    itemList[index].is_selected = !itemList[index].is_selected
+    for (let i=index+1; i<itemList.length; i++) {
+      itemList[i].is_selected = false
+    }
   }
 }

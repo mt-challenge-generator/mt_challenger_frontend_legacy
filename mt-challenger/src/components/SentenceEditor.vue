@@ -84,25 +84,39 @@ export default {
             })
         },
         handleApplyBucketBtn() {
-            const templateItem = {
-                label : this.$store.state.currentBucket.name,
-                bucket : this.$store.state.currentBucket.items
+            if (this.insertIndex!=null && this.$store.state.currentBucket.is_selected) {
+                    const templateItem = {
+                    label : this.$store.state.currentBucket.name,
+                    bucket : this.$store.state.currentBucket.items
+                }
+                this.sentenceTemplate[this.insertIndex] = templateItem
+                if (this.isInsertion) {
+                    this.sentenceTemplate.splice(this.insertIndex, 0, PLUS_TEMPLATE_ITEM())
+                    this.sentenceTemplate.splice(this.insertIndex+2, 0, PLUS_TEMPLATE_ITEM())
+                }
+                this.$store.commit('setCurrentSentenceTemplate', this.sentenceTemplate)
+                this.insertIndex = null
             }
-            this.sentenceTemplate[this.insertIndex] = templateItem
-            if (this.isInsertion) {
-                this.sentenceTemplate.splice(this.insertIndex, 0, PLUS_TEMPLATE_ITEM())
-                this.sentenceTemplate.splice(this.insertIndex+2, 0, PLUS_TEMPLATE_ITEM())
-            }
-            this.$store.commit('setCurrentSentenceTemplate', this.sentenceTemplate)
         },
         handleBucketClick(index) {
             deselect_all_else(this.$store.state.buckets, index)
-            this.$store.commit('setCurrentBucket', this.$store.state.buckets[index])
+            if (this.$store.state.buckets[index].is_selected) {
+                this.$store.commit('setCurrentBucket', this.$store.state.buckets[index])
+            }
+            else {
+                this.$store.commit('clearCurrentBucket')
+            }
         },
         handleItemClick(index) {
             deselect_all_else(this.sentenceTemplate, index)
-            this.insertIndex = index
-            this.isInsertion = this.sentenceTemplate[index].label === PLUS
+            if (this.sentenceTemplate[index].is_selected) {
+                this.insertIndex = index
+                this.isInsertion = this.sentenceTemplate[index].label === PLUS
+            }
+            else {
+                this.insertIndex = null
+                this.isInsertion = false
+            }
         }
     }
 }
