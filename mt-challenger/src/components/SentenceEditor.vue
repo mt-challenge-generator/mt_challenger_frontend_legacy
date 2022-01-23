@@ -44,8 +44,8 @@
 import Button from 'primevue/button'
 import Panel from 'primevue/panel'
 import Fieldset from 'primevue/fieldset'
-import { PLUS, PLUS_TEMPLATE_ITEM } from '../utils/constants'
-import { generateSentences } from '../utils/functions'
+import { PLUS, PLUS_TEMPLATE_ITEM } from '../utils'
+import { generateSentences } from '../utils'
 
 export default {
     name: 'SentenceEditor',

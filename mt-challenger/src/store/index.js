@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { PLUS_TEMPLATE_ITEM } from '../utils/constants'
+import { PLUS_TEMPLATE_ITEM } from '../utils'
 
 const defaultState = () => {
   return {
