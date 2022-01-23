@@ -1,2 +1,2 @@
 export * from './constants';
-export { tokenizeSentence, generateSentences } from './functions';
+export { tokenizeSentence, generateSentences, deselect_all_else } from './functions';

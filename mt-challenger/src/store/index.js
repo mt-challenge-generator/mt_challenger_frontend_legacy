@@ -77,17 +77,20 @@ const defaultState = () => {
       {
         id: 1,
         name: 'ADJ_color',
-        items: ['red', 'blue', 'green']
+        items: ['red', 'blue', 'green'],
+        is_selected: false
       },
       {
         id: 2,
         name: 'NN_four_wheels',
-        items: ['bus', 'lorry', 'van']
+        items: ['bus', 'lorry', 'van'],
+        is_selected: false
       },
       {
         id: 3,
         name: 'ADV_modal',
-        items: ['smoothly', 'nicely', 'safely']
+        items: ['smoothly', 'nicely', 'safely'],
+        is_selected: false
       }
     ],
     currentBucket: {},
@@ -101,34 +104,37 @@ const defaultState = () => {
 }
 
 
-
 const state = defaultState()
 
 const getters = {
   getTemplateFromCurrentTestItem: () => {
     // TO DO
     return [
-      PLUS_TEMPLATE_ITEM,
+      PLUS_TEMPLATE_ITEM(),
       {
         label: 'This',
-        bucket: ['This']
+        bucket: ['This'],
+        is_selected: false
       },
-      PLUS_TEMPLATE_ITEM,
+      PLUS_TEMPLATE_ITEM(),
       {
         label: 'car',
-        bucket: ['car']
+        bucket: ['car'],
+        is_selected: false
       },
-      PLUS_TEMPLATE_ITEM,
+      PLUS_TEMPLATE_ITEM(),
       {
         label: 'drives',
-        bucket: ['drives']
+        bucket: ['drives'],
+        is_selected: false
       },
-      PLUS_TEMPLATE_ITEM,
+      PLUS_TEMPLATE_ITEM(),
       {
         label: 'easily',
-        bucket: ['easily']
+        bucket: ['easily'],
+        is_selected: false
       },
-      PLUS_TEMPLATE_ITEM
+      PLUS_TEMPLATE_ITEM()
     ]
   }
 }

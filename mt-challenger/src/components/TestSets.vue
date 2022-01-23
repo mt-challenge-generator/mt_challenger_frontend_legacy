@@ -45,8 +45,6 @@ export default {
     },
     methods: {
         handleSelectBtn(testset) {
-            // TO DO: get list of sets
-            console.log('test set', testset)
             this.$store.commit('setCurrentTestSet', testset)
             this.$router.push({name: 'select-sentence', params: { setid: testset.id}})
         }
