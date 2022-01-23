@@ -50,8 +50,6 @@ export default {
     },
     methods: {
         handleNextBtn() {
-            // TO DO: get list of sets
-            console.log('test item', this.selectedItem)
             this.$store.commit('setCurrentTestItem', this.selectedItem)
             this.$router.push({
                 name: 'edit-sentence', 

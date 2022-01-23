@@ -8,7 +8,10 @@
             <div class="flex flex-row">
                 <Fieldset legend="Editor" class="col-10">
                     <div  class="flex flex-wrap overflow-y-scroll">
-                        <Button v-for="(item, index) in sentenceTemplate" :key="index" :label="item.label" class="py-1 px-2 m-1 p-button-help p-button-outlined p-button-rounded" @click="handleItemClick(index)"/>
+                        <div v-for="(item, index) in sentenceTemplate" :key="index">
+                            <Button v-if="item.is_selected" :label="item.label" class="py-1 px-2 m-1 p-button-help p-button-rounded" @click="handleItemClick(index)"/>
+                            <Button v-else :label="item.label" class="py-1 px-2 m-1 p-button-help p-button-outlined p-button-rounded" @click="handleItemClick(index)"/>
+                        </div>
                     </div>
                 </Fieldset>
                 <div class="flex justify-content-end align-items-center col-2">
@@ -19,7 +22,10 @@
         <div class="card my-3 flex">
             <Panel header="Bucket" class="col-5 ">
                 <div class="flex flex-wrap overflow-y-scroll">
-                    <Button v-for="bucket in $store.state.buckets" :key="bucket.id" :label="bucket.name" class="py-1 px-2 m-1 p-button-help p-button-outlined p-button-rounded" @click="handleBucketClick(bucket)"/>
+                    <div v-for="(item, index) in $store.state.buckets" :key="index">
+                        <Button v-if="item.is_selected" :label="item.name" class="py-1 px-2 m-1 p-button-help p-button-rounded" @click="handleBucketClick(index)"/>
+                        <Button v-else :label="item.name" class="py-1 px-2 m-1 p-button-help p-button-outlined p-button-rounded" @click="handleBucketClick(index)"/>
+                    </div>
                 </div>
             </Panel>
             <div class="flex justify-content-center align-items-center col-2">
@@ -45,7 +51,7 @@ import Button from 'primevue/button'
 import Panel from 'primevue/panel'
 import Fieldset from 'primevue/fieldset'
 import { PLUS, PLUS_TEMPLATE_ITEM } from '../utils'
-import { generateSentences } from '../utils'
+import { generateSentences, deselect_all_else } from '../utils'
 
 export default {
     name: 'SentenceEditor',
@@ -69,7 +75,6 @@ export default {
         handleGenerateBtn() {
             const sentences = generateSentences(this.sentenceTemplate)
             this.$store.commit('setGeneratedSentences', sentences)
-            console.log(this.$store.state.generatedSentences)
             this.$router.push({
                 name: 'validate-sentences', 
                 params: { 
@@ -85,17 +90,19 @@ export default {
             }
             this.sentenceTemplate[this.insertIndex] = templateItem
             if (this.isInsertion) {
-                this.sentenceTemplate.splice(this.insertIndex, 0, PLUS_TEMPLATE_ITEM)
-                this.sentenceTemplate.splice(this.insertIndex+2, 0, PLUS_TEMPLATE_ITEM)
+                this.sentenceTemplate.splice(this.insertIndex, 0, PLUS_TEMPLATE_ITEM())
+                this.sentenceTemplate.splice(this.insertIndex+2, 0, PLUS_TEMPLATE_ITEM())
             }
             this.$store.commit('setCurrentSentenceTemplate', this.sentenceTemplate)
         },
-        handleBucketClick(bucket) {
-            this.$store.commit('setCurrentBucket', bucket)
+        handleBucketClick(index) {
+            deselect_all_else(this.$store.state.buckets, index)
+            this.$store.commit('setCurrentBucket', this.$store.state.buckets[index])
         },
         handleItemClick(index) {
+            deselect_all_else(this.sentenceTemplate, index)
             this.insertIndex = index
-            this.isInsertion = this.sentenceTemplate[this.insertIndex].label === PLUS
+            this.isInsertion = this.sentenceTemplate[index].label === PLUS
         }
     }
 }
