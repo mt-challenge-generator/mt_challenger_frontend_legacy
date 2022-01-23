@@ -11,7 +11,6 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    redirect: '/generator',
     component: Home
   },
   {
