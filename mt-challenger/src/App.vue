@@ -1,7 +1,9 @@
 <template>
-  <AppNavigation />
-  <RouterView class=" mt-7 ml-5 mr-5" />
-  <AppFooter />
+  <div>
+    <AppNavigation />
+    <RouterView class=" mt-7 ml-5 mr-5" />
+    <AppFooter />
+  </div>
 </template>
 
 <script>
