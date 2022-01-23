@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import { PLUS_TEMPLATE_ITEM } from '../utils/constants'
 
 const defaultState = () => {
   return {
@@ -99,39 +100,35 @@ const defaultState = () => {
   }
 }
 
+
+
 const state = defaultState()
 
 const getters = {
   getTemplateFromCurrentTestItem: () => {
     // TO DO
     return [
+      PLUS_TEMPLATE_ITEM,
       {
         label: 'This',
         bucket: ['This']
       },
-      {
-        label: '+',
-        bucket: []
-      },
+      PLUS_TEMPLATE_ITEM,
       {
         label: 'car',
         bucket: ['car']
       },
-      {
-        label: '+',
-        bucket: []
-      },
+      PLUS_TEMPLATE_ITEM,
       {
         label: 'drives',
         bucket: ['drives']
       },
+      PLUS_TEMPLATE_ITEM,
       {
-        label: '+',
-        bucket: []
-      },{
         label: 'easily',
         bucket: ['easily']
-      }
+      },
+      PLUS_TEMPLATE_ITEM
     ]
   }
 }
@@ -153,9 +150,13 @@ const mutations = {
     state.testItems = testItems
   },
 
-  setCurrentSentenceTemplate: (state, currentSentenceTemplate) => {
-    state.currentSentenceTemplate = currentSentenceTemplate
-},
+  setCurrentSentenceTemplate: (state, sentenceTemplate) => {
+    state.currentSentenceTemplate = sentenceTemplate
+  },
+
+  setGeneratedSentences: (state, generatedSentences) => {
+    state.generatedSentences = generatedSentences
+  },
 
   setCurrentBucket: (state, bucket) => {
     Object.assign(state.currentBucket, bucket);
