@@ -1,4 +1,5 @@
 import { Tokenizer } from 'nlp-tokenizer' // NNTokenizer, WordPieceTokenizer
+import { PLUS } from '../utils'
 
 export function tokenizeSentence(inputSentence) {
 
@@ -13,12 +14,17 @@ export function tokenizeSentence(inputSentence) {
   // populate list of tokens
   let tLen = tokens.length;
   for (let i = 0; i < tLen; i++) {
-    tokens_plus.push('+');
+    tokens_plus.push(PLUS);
     tokens_plus.push(tokens[i]);
   }
-  tokens_plus.push('+')
+  tokens_plus.push(PLUS)
 
-  return tokens_plus;
+  return tokens_plus.map(token => { 
+    return {
+      label: token,
+      bucket: token === PLUS ? [] : [token],
+      is_selected: false
+    }})
 }
 
 // helper function

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { PLUS_TEMPLATE_ITEM } from '../utils'
+import { tokenizeSentence } from '../utils'
 
 const defaultState = () => {
   return {
@@ -23,32 +23,13 @@ const defaultState = () => {
           id: 4,
           name: 'Test Set 4',
           description: "Test set for middle voice challenge"
-      },{
-          id: 5,
-          name: 'Test Set 5',
-          description: "Test set for middle voice challenge"
-      },
-      {
-          id: 6,
-          name: 'Test Set 6',
-          description: "Test set for middle voice challenge"
-      },
-      {
-          id: 7,
-          name: 'Test Set 7',
-          description: "Test set for middle voice challenge"
-      },
-      {
-          id: 8,
-          name: 'Test Set 8',
-          description: "Test set for middle voice challenge"
       }
     ],
     currentTestSet: {},
     testItems: [
       {
         id: 1,
-        source: 'This car drives easily',
+        source: 'This car drives easily.',
         target: {
           prefix: '+/-',
           rule: 'regex'
@@ -56,7 +37,7 @@ const defaultState = () => {
       },
       {
         id: 2,
-        source: 'This car drives easily',
+        source: 'This car drives easily.',
         target: {
           prefix: '+/-',
           rule: 'regex'
@@ -64,7 +45,7 @@ const defaultState = () => {
       },
       {
         id: 3,
-        source: 'This car drives easily',
+        source: 'This car drives easily.',
         target: {
           prefix: '+/-',
           rule: 'regex'
@@ -103,39 +84,11 @@ const defaultState = () => {
   }
 }
 
-
 const state = defaultState()
 
 const getters = {
-  getTemplateFromCurrentTestItem: () => {
-    // TO DO
-    return [
-      PLUS_TEMPLATE_ITEM(),
-      {
-        label: 'This',
-        bucket: ['This'],
-        is_selected: false
-      },
-      PLUS_TEMPLATE_ITEM(),
-      {
-        label: 'car',
-        bucket: ['car'],
-        is_selected: false
-      },
-      PLUS_TEMPLATE_ITEM(),
-      {
-        label: 'drives',
-        bucket: ['drives'],
-        is_selected: false
-      },
-      PLUS_TEMPLATE_ITEM(),
-      {
-        label: 'easily',
-        bucket: ['easily'],
-        is_selected: false
-      },
-      PLUS_TEMPLATE_ITEM()
-    ]
+  getTemplateFromCurrentTestItem: (state) => {
+    return tokenizeSentence(state.currentTestItem.source)
   }
 }
 
@@ -172,7 +125,7 @@ const mutations = {
     Object.assign(state.currentBucket, { id: null,
       name: '',
       items: [],
-      is_selected: false} );
+      is_selected: false});
   },
 
   setAlert: (state, alert) => {

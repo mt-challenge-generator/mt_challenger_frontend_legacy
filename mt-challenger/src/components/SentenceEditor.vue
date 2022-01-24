@@ -85,11 +85,8 @@ export default {
         },
         handleApplyBucketBtn() {
             if (this.insertIndex!=null && this.$store.state.currentBucket.is_selected) {
-                    const templateItem = {
-                    label : this.$store.state.currentBucket.name,
-                    bucket : this.$store.state.currentBucket.items
-                }
-                this.sentenceTemplate[this.insertIndex] = templateItem
+                this.sentenceTemplate[this.insertIndex].label = this.$store.state.currentBucket.name
+                this.sentenceTemplate[this.insertIndex].bucket = [...this.$store.state.currentBucket.items]
                 if (this.isInsertion) {
                     this.sentenceTemplate.splice(this.insertIndex, 0, PLUS_TEMPLATE_ITEM())
                     this.sentenceTemplate.splice(this.insertIndex+2, 0, PLUS_TEMPLATE_ITEM())
