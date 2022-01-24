@@ -41,7 +41,7 @@ function _generateSentences(a, b, ...c) {
 export function generateSentences(itemList) {
     let bucketList = itemList.map(({bucket})=>bucket);
     const bucketListFilt = bucketList.filter((element) => { return element.length > 0;})
-    return _generateSentences(...bucketListFilt);
+    return _generateSentences(...bucketListFilt).map(sentence => { return {source: sentence}})
 }
 
 // toggle the 'is_selected' property of the item at the given index and deselects all the other items in the list

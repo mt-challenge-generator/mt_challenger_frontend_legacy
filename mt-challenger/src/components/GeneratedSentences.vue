@@ -1,7 +1,7 @@
 <template>
     <div class="card mt-5">
         <DataTable :value="$store.state.generatedSentences" :paginator="true" class="" :rows="5"
-            dataKey="id" :rowHover="true" v-model:selection="selectedSentences"  :loading="loading"
+            dataKey="source" :rowHover="true" v-model:selection="selectedSentences"  :loading="loading"
             paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,20]"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             responsiveLayout="scroll">
@@ -20,7 +20,7 @@
             <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
             <Column field="source" header="Generated sentence" style="min-width: 14rem">
                 <template #body="{data}">
-                    {{data}}
+                    {{data.source}}
                 </template>
             </Column>
         </DataTable>
@@ -49,15 +49,8 @@ export default {
         }
     },
     methods: {
-        handleNextBtn() {
-            this.$store.commit('setCurrentTestItem', this.selectedItem)
-            this.$router.push({
-                name: 'edit-sentence', 
-                params: { 
-                    setid: this.$store.state.currentTestSet.id,
-                    itemid: this.$store.state.currentTestItem.id
-                }
-            })
+        handleSaveBtn() {
+            
         }
     }
 }
