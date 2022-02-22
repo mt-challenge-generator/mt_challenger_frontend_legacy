@@ -1,6 +1,6 @@
 <template>
     <div class="card mt-5">
-        <DataView :value="$store.state.testsets" layout="grid" :paginator="true" :rows="4">
+        <DataView :value="$store.state.testSets" layout="grid" :paginator="true" :rows="4">
             <template #header>
                 <div class="">
                     List of available test sets
