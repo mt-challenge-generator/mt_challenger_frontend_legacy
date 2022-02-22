@@ -6,7 +6,7 @@ import { Bucket } from "@/interfaces/bucket.interface";
 import { TemplateItem } from "@/interfaces/template-item.interface";
 import { Alert } from "@/interfaces/alert.interface";
 import { Commit } from "vuex";
-import { State } from "@/interfaces/State.interface";
+import { State } from "@/interfaces/state.interface";
 
 const defaultState = () => {
   return {
