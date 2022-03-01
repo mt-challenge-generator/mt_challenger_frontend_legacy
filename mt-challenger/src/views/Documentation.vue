@@ -2,8 +2,9 @@
   <div>This is the documentation page</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "Documentation",
-};
+});
 </script>

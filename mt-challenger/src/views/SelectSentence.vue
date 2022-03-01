@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Breadcrumb from "primevue/breadcrumb";
 import TestItems from "../components/TestItems.vue";
 

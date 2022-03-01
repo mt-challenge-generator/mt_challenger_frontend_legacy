@@ -13,21 +13,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Button from "primevue/button";
-
-export default {
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+export default defineComponent({
   name: "Generator",
   components: {
     Button,
   },
-  data() {
-    return {};
+  setup() {
+    const router = useRouter();
+    function handleGetStartedBtn() {
+      router.push({ name: "select-test-set" });
+    }
+    return {
+      handleGetStartedBtn,
+    };
   },
-  methods: {
-    handleGetStartedBtn() {
-      this.$router.push({ name: "select-test-set" });
-    },
-  },
-};
+});
 </script>

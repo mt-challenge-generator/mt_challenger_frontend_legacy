@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { store } from "./store";
+import { store, key } from "./store";
 import { router } from "./router";
 import App from "./App.vue";
 import PrimeVue from "primevue/config";
@@ -14,7 +14,7 @@ import "primeicons/primeicons.css"; //icons
 const app = createApp(App);
 
 app.use(PrimeVue);
-app.use(store);
+app.use(store, key);
 app.use(router);
 app.use(ToastService);
 

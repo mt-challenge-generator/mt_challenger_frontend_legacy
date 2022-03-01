@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import {createStore, Store} from "vuex";
 import { tokenizeSentence } from "@/utils";
 import { TestSet } from "@/interfaces/test-set.interface";
 import { TestItem } from "@/interfaces/test-item.interface";
@@ -7,6 +7,7 @@ import { TemplateItem } from "@/interfaces/template-item.interface";
 import { Alert } from "@/interfaces/alert.interface";
 import { Commit } from "vuex";
 import { State } from "@/interfaces/state.interface";
+import {InjectionKey} from "vue";
 
 const defaultState = () => {
   return {
@@ -185,8 +186,8 @@ const actions = {
     });
   },
 };
-
-export const store = createStore({
+export const key: InjectionKey<Store<State>> = Symbol();
+export const store = createStore<State>({
   state,
   getters,
   mutations,

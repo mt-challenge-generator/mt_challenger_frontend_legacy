@@ -6,26 +6,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Breadcrumb from "primevue/breadcrumb";
-import TestSets from "../components/TestSets";
+import TestSets from "../components/TestSets.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "SelectTestSet",
   components: {
     Breadcrumb,
     TestSets,
   },
-  data() {
+  setup() {
+    const home = { icon: "pi pi-home", to: { name: "generator" } };
+    const items = [
+      {
+        label: "Select Test Set",
+        to: { name: "select-test-set" },
+      },
+    ];
     return {
-      home: { icon: "pi pi-home", to: { name: "generator" } },
-      items: [
-        {
-          label: "Select Test Set",
-          to: { name: "select-test-set" },
-        },
-      ],
+      home,
+      items,
     };
   },
-};
+});
 </script>
