@@ -51,8 +51,9 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
-import {useStore} from "vuex";
-import {ref} from "vue";
+import { useStore } from "vuex";
+import { ref } from "vue";
+import { key } from "@/store";
 
 export default {
   name: "GeneratedSentences",
@@ -62,10 +63,12 @@ export default {
     Column,
   },
   setup() {
-    const store = useStore();
-    const selectedSentences = ref<{source:string }|null>();
+    const store = useStore(key);
+    const selectedSentences = ref<{ source: string } | null>();
     const loading = ref(false);
-    function handleSaveBtn() {}
+    function handleSaveBtn() {
+      console.log("empty");
+    }
     return {
       store,
       selectedSentences,

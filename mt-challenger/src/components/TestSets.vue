@@ -42,6 +42,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { TestSet } from "@/interfaces/test-set.interface";
 import { defineComponent } from "vue";
+import { key } from "@/store";
 
 export default defineComponent({
   name: "TestSets",
@@ -51,7 +52,7 @@ export default defineComponent({
     Card,
   },
   setup() {
-    const store = useStore();
+    const store = useStore(key);
     const router = useRouter();
     function handleSelectBtn(testset: TestSet) {
       store.commit("setCurrentTestSet", testset);
