@@ -1,7 +1,7 @@
 <template>
   <div class="card mt-5">
     <DataTable
-      :value="$store.state.testItems"
+      :value="store.state.testItems"
       :paginator="true"
       class=""
       :rows="5"
@@ -16,9 +16,9 @@
     >
       <template #header>
         <div class="flex justify-content-between align-items-center">
-          <div>{{ $store.state.currentTestSet.name }}</div>
+          <div>{{ store.state.currentTestSet.name }}</div>
           <div class="font-light">
-            {{ $store.state.currentTestSet.description }}
+            {{ store.state.currentTestSet.description }}
           </div>
         </div>
       </template>
@@ -44,35 +44,45 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { key } from "@/store";
+import { ref } from "vue";
+import { TestItem } from "@/interfaces/test-item.interface";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "TestSets",
   components: {
     Button,
     DataTable,
     Column,
   },
-  data() {
-    return {
-      selectedItem: null,
-      loading: false,
-    };
-  },
-  methods: {
-    handleNextBtn() {
-      this.$store.commit("setCurrentTestItem", this.selectedItem);
-      this.$router.push({
+  setup() {
+    const store = useStore(key);
+    const router = useRouter();
+    const selectedItem = ref<TestItem>();
+    const loading = ref(false);
+    function handleNextBtn() {
+      store.commit("setCurrentTestItem", selectedItem);
+      router.push({
         name: "edit-sentence",
         params: {
-          setid: this.$store.state.currentTestSet.id,
-          itemid: this.$store.state.currentTestItem.id,
+          setid: store.state.currentTestSet.id,
+          itemid: store.state.currentTestItem.id,
         },
       });
-    },
+    }
+    return {
+      store,
+      selectedItem,
+      loading,
+      handleNextBtn,
+    };
   },
-};
+});
 </script>

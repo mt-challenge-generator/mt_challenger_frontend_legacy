@@ -1,7 +1,7 @@
 <template>
   <div class="card mt-5">
     <DataView
-      :value="$store.state.testSets"
+      :value="store.state.testSets"
       layout="grid"
       :paginator="true"
       :rows="4"
@@ -34,26 +34,36 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import DataView from "primevue/dataview";
 import Card from "primevue/card";
 import Button from "primevue/button";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { TestSet } from "@/interfaces/test-set.interface";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "TestSets",
   components: {
     Button,
     DataView,
     Card,
   },
-  methods: {
-    handleSelectBtn(testset) {
-      this.$store.commit("setCurrentTestSet", testset);
-      this.$router.push({
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    function handleSelectBtn(testset: TestSet) {
+      store.commit("setCurrentTestSet", testset);
+      router.push({
         name: "select-sentence",
         params: { setid: testset.id },
       });
-    },
+    }
+    return {
+      store,
+      handleSelectBtn,
+    };
   },
-};
+});
 </script>

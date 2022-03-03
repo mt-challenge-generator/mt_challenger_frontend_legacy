@@ -1,7 +1,7 @@
 <template>
   <div class="card mt-5">
     <DataTable
-      :value="$store.state.generatedSentences"
+      :value="store.state.generatedSentences"
       :paginator="true"
       class=""
       :rows="5"
@@ -47,10 +47,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
+import {useStore} from "vuex";
+import {ref} from "vue";
 
 export default {
   name: "GeneratedSentences",
@@ -59,14 +61,17 @@ export default {
     DataTable,
     Column,
   },
-  data() {
+  setup() {
+    const store = useStore();
+    const selectedSentences = ref<{source:string }|null>();
+    const loading = ref(false);
+    function handleSaveBtn() {}
     return {
-      selectedSentences: null,
-      loading: false,
+      store,
+      selectedSentences,
+      loading,
+      handleSaveBtn,
     };
-  },
-  methods: {
-    handleSaveBtn() {},
   },
 };
 </script>

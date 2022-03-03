@@ -1,6 +1,7 @@
 import { Tokenizer } from "nlp-tokenizer"; // NNTokenizer, WordPieceTokenizer
 import { PLUS } from "./index";
 import { TemplateItem } from "@/interfaces/template-item.interface";
+import { Bucket } from "@/interfaces/bucket.interface";
 
 export function tokenizeSentence(inputSentence: string): TemplateItem[] {
   const tokenizer = new Tokenizer();
@@ -61,7 +62,10 @@ export function generateSentences(
 }
 
 // toggle the 'is_selected' property of the item at the given index and deselects all the other items in the list
-export function deselect_all_else(itemList: TemplateItem[], index = -1): void {
+export function deselect_all_else(
+  itemList: TemplateItem[] | Bucket[],
+  index = -1
+): void {
   if (index < 0 || index >= itemList.length) {
     for (const item of itemList) {
       item.is_selected = false;

@@ -10,15 +10,17 @@
 import Breadcrumb from "primevue/breadcrumb";
 import SentenceEditor from "../components/SentenceEditor.vue";
 import { useStore } from "vuex";
+import { key } from "@/store";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "EditSentence",
   components: {
     Breadcrumb,
     SentenceEditor,
   },
   setup() {
-    const store = useStore();
+    const store = useStore(key);
     const home = { icon: "pi pi-home", to: { name: "generator" } };
     const items = [
       {
@@ -48,5 +50,5 @@ export default {
       items,
     };
   },
-};
+});
 </script>
