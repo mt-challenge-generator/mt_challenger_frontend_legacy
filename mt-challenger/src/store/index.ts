@@ -89,6 +89,10 @@ const defaultState = () => {
       type: "",
       message: "",
     } as Alert,
+    backendURL:
+      process.env.NODE_ENV === "development"
+        ? (process.env.VUE_APP_DEV_BACKEND_URL as string)
+        : (process.env.VUE_APP_PROD_BACKEND_URL as string),
   };
 };
 
