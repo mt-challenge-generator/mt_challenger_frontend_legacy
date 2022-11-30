@@ -1,9 +1,10 @@
 <template>
-    <div>This is the documentation page</div>
+  <div>This is the documentation page</div>
 </template>
 
-<script>
-export default {
-    name: 'Documentation'
-}
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Documentation",
+});
 </script>

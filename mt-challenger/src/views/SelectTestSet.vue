@@ -1,30 +1,34 @@
 <template>
-    <div>
-        <Breadcrumb :home="home" :model="items" />
-        <router-view />
-        <TestSets />
-    </div>
+  <div>
+    <Breadcrumb :home="home" :model="items" />
+    <router-view />
+    <TestSets />
+  </div>
 </template>
 
-<script>
-import Breadcrumb from 'primevue/breadcrumb'
-import TestSets from '../components/TestSets'
+<script lang="ts">
+import Breadcrumb from "primevue/breadcrumb";
+import TestSets from "../components/TestSets.vue";
+import { defineComponent } from "vue";
 
-export default {
-    name: 'SelectTestSet',
-    components: {
-        Breadcrumb, 
-        TestSets
-    },
-    data() {
-		return {
-            
-            home: {icon: 'pi pi-home', to: {name: 'generator'}},
-			items: [{
-                label: 'Select Test Set',
-                to: {name: 'select-test-set'}
-            }]
-		}
-	}
-}
+export default defineComponent({
+  name: "SelectTestSet",
+  components: {
+    Breadcrumb,
+    TestSets,
+  },
+  setup() {
+    const home = { icon: "pi pi-home", to: { name: "generator" } };
+    const items = [
+      {
+        label: "Select Test Set",
+        to: { name: "select-test-set" },
+      },
+    ];
+    return {
+      home,
+      items,
+    };
+  },
+});
 </script>

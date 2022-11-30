@@ -1,42 +1,54 @@
 <template>
-    <div>
-        <Breadcrumb :home="home" :model="items" />
-        <router-view />
-        <SentenceEditor />
-    </div>
+  <div>
+    <Breadcrumb :home="home" :model="items" />
+    <router-view />
+    <SentenceEditor />
+  </div>
 </template>
 
-<script>
-import Breadcrumb from 'primevue/breadcrumb'
-import SentenceEditor from '../components/SentenceEditor.vue'
+<script lang="ts">
+import Breadcrumb from "primevue/breadcrumb";
+import SentenceEditor from "../components/SentenceEditor.vue";
+import { useStore } from "vuex";
+import { key } from "@/store";
+import { defineComponent } from "vue";
 
-export default {
-    name: 'EditSentence',
-    components: {
-        Breadcrumb,
-        SentenceEditor
-    },
-    data() {
-		return {
-            home: {icon: 'pi pi-home', to: {name: 'generator'}},
-			items: [{
-                label: 'Select Test Set',
-                to: {name: 'select-test-set'}
-            },
-            {
-                label: 'Select Sentence',
-                to: {name: 'select-sentence', params: { setid: this.$store.state.currentTestSet.id}}
-            },
-            {
-                label: 'Edit Sentence',
-                to: {name: 'edit-sentence', 
-                    params: { 
-                        setid: this.$store.state.currentTestSet.id,
-                        itemid: this.$store.state.currentTestItem.id
-                    }
-                }
-            }]
-		}
-	}
-}
+export default defineComponent({
+  name: "EditSentence",
+  components: {
+    Breadcrumb,
+    SentenceEditor,
+  },
+  setup() {
+    const store = useStore(key);
+    const home = { icon: "pi pi-home", to: { name: "generator" } };
+    const items = [
+      {
+        label: "Select Test Set",
+        to: { name: "select-test-set" },
+      },
+      {
+        label: "Select Sentence",
+        to: {
+          name: "select-sentence",
+          params: { setid: store.state.currentTestSet.id },
+        },
+      },
+      {
+        label: "Edit Sentence",
+        to: {
+          name: "edit-sentence",
+          params: {
+            setid: store.state.currentTestSet.id,
+            itemid: store.state.currentTestItem.id,
+          },
+        },
+      },
+    ];
+    return {
+      home,
+      items,
+    };
+  },
+});
 </script>
