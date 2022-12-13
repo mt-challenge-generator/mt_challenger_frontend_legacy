@@ -37,4 +37,5 @@ body #app .p-button {
 form {
   margin-top: 2em;
 }
+@import "~bootstrap/dist/css/bootstrap.css";
 </style>

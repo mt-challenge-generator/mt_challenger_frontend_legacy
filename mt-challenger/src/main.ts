@@ -4,6 +4,7 @@ import { router } from "./router";
 import App from "./App.vue";
 import PrimeVue from "primevue/config";
 import ToastService from "primevue/toastservice";
+import "bootstrap/dist/css/bootstrap.css";
 
 // flex, theme, core css, icons
 import "primeflex/primeflex.css";

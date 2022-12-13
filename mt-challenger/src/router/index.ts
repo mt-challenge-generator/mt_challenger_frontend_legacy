@@ -6,12 +6,18 @@ import EditSentence from "../views/EditSentence.vue";
 import SelectSentence from "../views/SelectSentence.vue";
 import ValidateSentences from "../views/ValidateSentences.vue";
 import SelectTestSet from "../views/SelectTestSet.vue";
+import TestItem from "../views/TestItem.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     name: "home",
     path: "/",
     component: Home,
+  },
+  {
+    name: "testitem",
+    path: "/testitem",
+    component: TestItem,
   },
   {
     name: "generator",
