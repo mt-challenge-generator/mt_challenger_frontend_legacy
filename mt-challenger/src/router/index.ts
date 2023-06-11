@@ -6,7 +6,8 @@ import EditSentence from "../views/EditSentence.vue";
 import SelectSentence from "../views/SelectSentence.vue";
 import ValidateSentences from "../views/ValidateSentences.vue";
 import SelectTestSet from "../views/SelectTestSet.vue";
-
+import Dashboard from "../views/Dashboard.vue";
+import Signup from "../views/Signup.vue";
 const routes: RouteRecordRaw[] = [
   {
     name: "home",
@@ -17,6 +18,16 @@ const routes: RouteRecordRaw[] = [
     name: "generator",
     path: "/generator",
     component: Generator,
+  },
+  {
+    name: "dashboard",
+    path: "/dashboard",
+    component: Dashboard,
+  },
+  {
+    name: "signup",
+    path: "/signup",
+    component: Signup,
   },
   {
     name: "select-test-set",

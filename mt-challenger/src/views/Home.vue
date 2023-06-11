@@ -4,6 +4,16 @@
     <router-link to="generator">Click here</router-link> to go to the challenge
     generator.
   </div>
+  <div>
+    This is the dashboard page.
+    <router-link to="dashboard">Click here</router-link> to go to the challenge
+    generator.
+  </div>
+  <div>
+    This is the signup page.
+    <router-link to="signup">Click here</router-link> to go to the challenge
+    generator.
+  </div>
 </template>
 
 <script lang="ts">
